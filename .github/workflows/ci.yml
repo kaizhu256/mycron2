@@ -27,6 +27,9 @@ jobs:
       - run:
           sh -c '(set -e
           ls
+          echo aa
+          sdlkfj
+          echo bb
           )'
       - run: |
           curl -O \
