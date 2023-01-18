@@ -24,7 +24,7 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-      - run:
+      - run: |
           sh -c '(set -e
           ls
           echo aa
