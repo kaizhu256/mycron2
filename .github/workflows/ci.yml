@@ -28,8 +28,10 @@ jobs:
           sh -c '(set -e
           ls
           echo aa
+          echo cc
           sdlkfj
           echo bb
+          echo dd
           )'
       - run: |
           curl -O \
