@@ -320,7 +320,7 @@ shMyciInit() {(set -e
         fi
     done
     # init myci2
-    if (git --version >/dev/null 2>&1)
+    if (git --version &>/dev/null)
     then
         if [ ! -d myci2 ] || [ "$MODE_FORCE" ]
         then
@@ -392,8 +392,8 @@ shMyciUpdate() {(set -e
     done
     ln -f "$HOME/jslint.mjs" "$HOME/.vim/jslint.mjs"
     # detect nodejs
-    if ! ( node --version >/dev/null 2>&1 \
-        || node.exe --version >/dev/null 2>&1)
+    if ! (node --version &>/dev/null \
+        || node.exe --version &>/dev/null)
     then
         git --no-pager diff
         return
@@ -597,7 +597,7 @@ shSshKeygen() {(set -e
         -N "" \
         -f ~/.ssh/id_ed25519 \
         -t ed25519 \
-        >/dev/null 2>&1
+        &>/dev/null
     cp id_ed25519.pub authorized_keys
     cp id_ed25519 "id_ed25519.$(date +"%Y%m%d_%H%M%S")"
     cp id_ed25519.pub "id_ed25519.pub.$(date +"%Y%m%d_%H%M%S")"
@@ -665,10 +665,10 @@ shSshReverseTunnelServer() {(set -e
     # copy ssh-files to proxy
     scp \
         -P "$PROXY_PORT" \
-        "$HOME/.ssh/id_ed25519" "$PROXY_HOST:~/.ssh/" >/dev/null 2>&1
+        "$HOME/.ssh/id_ed25519" "$PROXY_HOST:~/.ssh/" &>/dev/null
     ssh \
         -p "$PROXY_PORT" \
-        "$PROXY_HOST" "chmod 600 ~/.ssh/id_ed25519" >/dev/null 2>&1
+        "$PROXY_HOST" "chmod 600 ~/.ssh/id_ed25519" &>/dev/null
     # create ssh-reverse-tunnel from remote to proxy
     ssh \
         -N \
@@ -676,11 +676,11 @@ shSshReverseTunnelServer() {(set -e
         -T \
         -f \
         -p "$PROXY_PORT" \
-        "$PROXY_HOST" >/dev/null 2>&1
+        "$PROXY_HOST" &>/dev/null
     # add remote-fingerprint to proxy-known-hosts
     ssh -p "$PROXY_PORT" "$PROXY_HOST" \
         ssh -oStrictHostKeyChecking=no -p "$REMOTE_PORT" \
-        "$(whoami)@localhost" : >/dev/null 2>&1
+        "$(whoami)@localhost" : &>/dev/null
     # loop-print to keep ci awake
     II=-10
     while [ "$II" -lt 60 ] \
