@@ -25,6 +25,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          sh -c 'curl -s \
-          https://raw.githubusercontent.com/kaizhu256/myci2/alpha/jslint_ci.sh \
-              | sh'
+          source <(curl -s \
+          https://raw.githubusercontent.com/kaizhu256/myci2/alpha/jslint_ci.sh)
