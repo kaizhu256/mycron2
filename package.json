@@ -1,9 +1,0 @@
-{
-    "counter": 1,
-    "fileCount": 16,
-    "name": "myci2",
-    "scripts": {
-        "test": "sh jslint_ci.sh shCiBase"
-    },
-    "version": "2023.1.1-beta"
-}
