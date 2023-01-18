@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run:
-          sh -c '(
+          sh -c '(set -e
           ls
           )'
       - run: |
