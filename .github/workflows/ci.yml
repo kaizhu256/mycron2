@@ -15,16 +15,14 @@ on:
     # day of the week ([0,6] with 0=sunday)
     - cron:  0 * * * 1,2,3,4,5,6
   workflow_dispatch:
-env:
-  MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
 jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          curl "https://api.github.com/repos/kaizhu256/myci2/actions/workflows/ci.yml/dispatches" \
+          curl https://api.github.com/repos/kaizhu256/myci2/actions/workflows/ci.yml/dispatches \
               -H "accept: application/vnd.github.v3+json" \
-              -H "authorization: token $MY_GITHUB_TOKEN" \
+              -H "authorization: token ${{ secrets.MY_GITHUB_TOKEN }}" \
               -X POST \
               -d {ref:cron} \
               -s
