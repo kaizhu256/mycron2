@@ -17,12 +17,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          curl https://api.github.com/repos/kaizhu256/myci2/actions/workflows/ci.yml/dispatches \
-              -H "accept: application/vnd.github.v3+json" \
-              -H "authorization: token ${{ secrets.MY_GITHUB_TOKEN }}" \
-              -X POST \
-              -d '{"ref":"cron"}' \
-              -f \
-              --verbose \
-              # &>/dev/null
+          curl "https://api.github.com/repos/kaizhu256/myci2/actions/workflows/ci.yml/dispatches" \
+            -H "accept: application/vnd.github.v3+json" \
+            -H "authorization: token ${{ secrets.MY_GITHUB_TOKEN }}" \
+            -X POST \
+            -d '{"ref":"cron"}' \
+            -s \
+            &>/dev/null
 
