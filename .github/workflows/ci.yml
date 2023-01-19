@@ -23,6 +23,6 @@ jobs:
               -X POST \
               -d '{"ref":"cron"}' \
               -f \
-              -s \
+              --verbose \
               # &>/dev/null
 
