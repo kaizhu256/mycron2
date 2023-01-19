@@ -2,9 +2,6 @@
 # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule
 name: cron
 on:
-  # push:
-  #   branches:
-  #     - alpha
   schedule:
     # * is a special character in YAML so you have to quote this string
     # https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.htm
@@ -17,7 +14,6 @@ on:
   workflow_dispatch:
 jobs:
   job1:
-    runs-on: ubuntu-latest
     steps:
       - run: |
           curl https://api.github.com/repos/kaizhu256/myci2/actions/workflows/ci.yml/dispatches \
@@ -25,5 +21,6 @@ jobs:
               -H "authorization: token ${{ secrets.MY_GITHUB_TOKEN }}" \
               -X POST \
               -d '{"ref":"cron"}' \
-              -s
+              -s \
+              &>/dev/null
 
