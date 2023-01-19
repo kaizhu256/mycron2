@@ -24,6 +24,6 @@ jobs:
               -H "accept: application/vnd.github.v3+json" \
               -H "authorization: token ${{ secrets.MY_GITHUB_TOKEN }}" \
               -X POST \
-              -d {ref:cron} \
+              -d '{"ref":"cron"}' \
               -s
 
