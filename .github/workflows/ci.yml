@@ -13,7 +13,7 @@ on:
     # day of the month [1,31]
     # month of the year [1,12]
     # day of the week ([0,6] with 0=sunday)
-    - cron:  '0 * * * 1,2,3,4,5,6'
+    - cron:  0 * * * 1,2,3,4,5,6
   workflow_dispatch:
 env:
   MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
@@ -25,5 +25,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          source <(curl -s \
-          https://raw.githubusercontent.com/kaizhu256/myci2/alpha/jslint_ci.sh)
+          sh -c '(set -e
+          . <(curl -s \
+          https://raw.githubusercontent.com/kaizhu256/myci2/alpha/myci2.sh)
+          shMyciInit
+          cd ~/myci2/myci2
+          sh jslint_ci.sh shCiMycronRun
+          )'
+
