@@ -25,9 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          . <(curl -s \
-          https://raw.githubusercontent.com/kaizhu256/myci2/alpha/myci2.sh)
-          shMyciInit
-          cd ~/myci2
-          sh jslint_ci.sh shCiMycronRun
+          curl -s \
+          https://raw.githubusercontent.com/kaizhu256/myci2/alpha/mycron2.sh \
+              | sh
 
