@@ -2,9 +2,9 @@
 # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule
 name: cron
 on:
-  push:
-    branches:
-      - alpha
+  # push:
+  #   branches:
+  #     - alpha
   schedule:
     # * is a special character in YAML so you have to quote this string
     # https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.htm
@@ -25,17 +25,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          sh -c '(set -e
-          curl -o __tmp1 -s \
+          . <(curl -s \
           https://raw.githubusercontent.com/kaizhu256/myci2/alpha/myci2.sh)
-          echo aa
-          echo bb
-          alskdjf
-          echo zz
-          echo yy
-          . ./__tmp1
           shMyciInit
           cd ~/myci2/myci2
           sh jslint_ci.sh shCiMycronRun
-          )'
 
