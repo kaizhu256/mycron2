@@ -25,7 +25,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          curl -s \
-          https://raw.githubusercontent.com/kaizhu256/myci2/alpha/mycron2.sh \
-              | sh
+          curl -o ~/myci2.sh -s \
+              https://raw.githubusercontent.com/kaizhu256/myci2/alpha/myci2.sh
+          . ~/myci2.sh
+          shMyciInit
 
