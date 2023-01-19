@@ -17,16 +17,12 @@ on:
   workflow_dispatch:
 env:
   MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
-  zzzz1234: 1
-jobs:
-
-
-  job1:
-    runs-on: ubuntu-latest
-    steps:
-      - run: |
-          curl -o ~/myci2.sh -s \
-              https://raw.githubusercontent.com/kaizhu256/myci2/alpha/myci2.sh
-          . ~/myci2.sh
-          shMyciInit
+steps:
+- run: |
+    curl "https://api.github.com/repos/kaizhu256/myci2/actions/workflows/ci.yml/dispatches" \
+        -H "accept: application/vnd.github.v3+json" \
+        -H "authorization: token $MY_GITHUB_TOKEN" \
+        -X POST \
+        -d {ref:cron} \
+        -s
 
