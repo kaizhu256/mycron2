@@ -21,6 +21,7 @@ jobs:
               -H "authorization: token ${{ secrets.MY_GITHUB_TOKEN }}" \
               -X POST \
               -d '{"ref":"cron"}' \
+              -f \
               -s \
               &>/dev/null
 
