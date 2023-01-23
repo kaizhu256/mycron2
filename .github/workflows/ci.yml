@@ -21,7 +21,10 @@ jobs:
             -H "accept: application/vnd.github.v3+json" \
             -H "authorization: token ${{ secrets.MY_GITHUB_TOKEN }}" \
             -X POST \
-            -d '{"inputs":{"name":"mycron2"},"ref":"cron"}' \
+            -d '{
+                "inputs":{"workflow_dispatch_name":"mycron2"},
+                "ref":"cron"
+            }' \
             -s \
             &>/dev/null
 
