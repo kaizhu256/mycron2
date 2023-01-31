@@ -10,13 +10,13 @@ on:
     # day of the month [1,31]
     # month of the year [1,12]
     # day of the week ([0,6] with 0=sunday)
-    - cron:  0 * * * *
+    - cron: "0 * * * *"
   workflow_dispatch:
 jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "$(date -u +%F %TZ)"
+      - run: echo "$(date -u +"%Y-%m-%d %TZ")"
       - run: |
           curl "https://api.github.com/repos/kaizhu256/myci2/actions/workflows/ci.yml/dispatches" \
             -H "accept: application/vnd.github.v3+json" \
